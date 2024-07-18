@@ -9,4 +9,9 @@ class DefaultTodoRepository(val todoJpaRepository: TodoJpaRepository): TodoRepos
         todoJpaRepository.findAll()
         return listOf()
     }
+
+    override fun save(todo: Todo) {
+        val todoEntity = TodoEntity(todo.id,todo.name,todo.finished)
+        todoJpaRepository.save(todoEntity)
+    }
 }

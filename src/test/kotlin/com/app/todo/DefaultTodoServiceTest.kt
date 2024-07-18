@@ -44,4 +44,11 @@ class DefaultTodoServiceTest {
         assertThat(actual[0].finished, equalTo(testTodo.finished))
 
     }
+
+    @Test
+    fun `postTodos calls repository`() {
+        todoService.postTodos(Todo(1,"ringo",false))
+
+        assertThat(spyStubTodoRepository.called, equalTo(true))
+    }
 }

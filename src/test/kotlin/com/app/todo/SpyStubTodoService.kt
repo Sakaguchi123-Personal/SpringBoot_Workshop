@@ -10,7 +10,12 @@ class SpyStubTodoService: TodoService {
         return todos
     }
 
+    override fun postTodos(todo: Todo) {
+        called = true
+    }
+
     fun setTodos(todos: List<Todo>) {
         this.todos = todos
     }
+
 }

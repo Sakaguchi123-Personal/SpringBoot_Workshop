@@ -9,6 +9,10 @@ class SpyStubTodoRepository: TodoRepository {
         return todos
     }
 
+    override fun save(todo: Todo) {
+        called = true
+    }
+
     fun setTodos(todo: List<Todo>) {
         this.todos = todo
     }

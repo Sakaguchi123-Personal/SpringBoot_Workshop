@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 
+//マイグレの代わり(jpa) jdbctemplateだとマイグレがいる
 @Entity
 class TodoEntity(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
