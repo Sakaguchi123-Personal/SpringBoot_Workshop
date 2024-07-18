@@ -1,9 +1,11 @@
 package com.app.todo
 
+import com.fasterxml.jackson.databind.ObjectMapper
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
@@ -62,4 +64,39 @@ class TodoControllerTest {
         // 3. verify spy
         assertThat(spyStubTodoService.called, equalTo(true))
     }
+
+    //post Request test------------------------------------------
+
+    @Test
+    fun `post returns http status created`() {
+        val testTodo = Todo(1, "Learn Kotlin", false)
+        spyStubTodoService.setTodos(listOf(testTodo))
+
+        //json conversion
+        val objectMapper = ObjectMapper()
+        val testJson = objectMapper.writeValueAsString(testTodo)
+
+        mockMvc.perform(post("/api/v1/todo")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(testJson)
+        ).andExpect(status().isCreated)
+    }
+
+    // calls service to create
+    @Test
+    fun `post should call TodoService getTodos`() {
+        val testTodo = Todo(1, "Learn Kotlin", false)
+        spyStubTodoService.setTodos(listOf(testTodo))
+
+        //json conversion
+        val objectMapper = ObjectMapper()
+        val testJson = objectMapper.writeValueAsString(testTodo)
+
+        mockMvc.perform(post("/api/v1/todo")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(testJson))
+
+        assertThat(spyStubTodoService.called, equalTo(true))
+    }
+
 }

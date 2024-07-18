@@ -37,7 +37,6 @@ class DefaultTodoServiceTest {
         // action: call service
         val actual = todoService.getTodos()
 
-
         // assert
         assertThat(actual[0].id, equalTo(testTodo.id))
         assertThat(actual[0].name, equalTo(testTodo.name))
@@ -47,8 +46,9 @@ class DefaultTodoServiceTest {
 
     @Test
     fun `postTodos calls repository`() {
-        todoService.postTodos(Todo(1,"ringo",false))
+        todoService.postTodos(Todo(1,"Learn spring",false))
 
         assertThat(spyStubTodoRepository.called, equalTo(true))
     }
+
 }
