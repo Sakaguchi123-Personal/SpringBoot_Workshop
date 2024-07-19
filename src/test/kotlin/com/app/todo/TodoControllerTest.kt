@@ -32,7 +32,7 @@ class TodoControllerTest {
     fun `get returns list of todo`() {
         // set the return value I want for this test (stub)
         val testTodo = Todo(1, "Learn Kotlin", false)
-        spyStubTodoService.setTodos(listOf(testTodo))
+        spyStubTodoService.setGetTodosReturnValue(listOf(testTodo))
 
 
         val responseJson = """
@@ -62,7 +62,7 @@ class TodoControllerTest {
         mockMvc.perform(get("/api/v1/todo"))
 
         // 3. verify spy
-        assertThat(spyStubTodoService.called, equalTo(true))
+        assertThat(spyStubTodoService.getTodosCalled, equalTo(true))
     }
 
     //post Request test------------------------------------------
@@ -70,7 +70,6 @@ class TodoControllerTest {
     @Test
     fun `post returns http status created`() {
         val testTodo = Todo(1, "Learn Kotlin", false)
-        spyStubTodoService.setTodos(listOf(testTodo))
 
         //json conversion
         val objectMapper = ObjectMapper()
@@ -84,9 +83,8 @@ class TodoControllerTest {
 
     // calls service to create
     @Test
-    fun `post should call TodoService getTodos`() {
+    fun `post should call TodoService postTodos`() {
         val testTodo = Todo(1, "Learn Kotlin", false)
-        spyStubTodoService.setTodos(listOf(testTodo))
 
         //json conversion
         val objectMapper = ObjectMapper()
@@ -96,7 +94,7 @@ class TodoControllerTest {
             .contentType(MediaType.APPLICATION_JSON)
             .content(testJson))
 
-        assertThat(spyStubTodoService.called, equalTo(true))
+        assertThat(spyStubTodoService.postTodosCalled, equalTo(true))
     }
 
 }

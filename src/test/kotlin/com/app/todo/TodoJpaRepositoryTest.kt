@@ -20,12 +20,11 @@ class TodoJpaRepositoryTest {
             first, second
         ))
 
-
         val actual = repository.findAll()
-
 
         assertThat(actual.size, equalTo(2))
         assertThat(actual[0], equalTo(first))
         assertThat(actual[1], equalTo(second))
     }
+
 }

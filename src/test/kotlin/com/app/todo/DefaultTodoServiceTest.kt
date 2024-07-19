@@ -24,7 +24,7 @@ class DefaultTodoServiceTest {
 
 
         // assert: verify repository called
-        assertThat(spyStubTodoRepository.called, equalTo(true))
+        assertThat(spyStubTodoRepository.findAllCalled, equalTo(true))
 
     }
 
@@ -32,7 +32,7 @@ class DefaultTodoServiceTest {
     fun `getTodos return todos`() {
         // set up data here
         val testTodo = Todo(2, "Learn spring", false)
-        spyStubTodoRepository.setTodos(listOf(testTodo))
+        spyStubTodoRepository.setFindAllReturnValue(listOf(testTodo))
 
         // action: call service
         val actual = todoService.getTodos()
@@ -48,7 +48,7 @@ class DefaultTodoServiceTest {
     fun `postTodos calls repository`() {
         todoService.postTodos(Todo(1,"Learn spring",false))
 
-        assertThat(spyStubTodoRepository.called, equalTo(true))
+        assertThat(spyStubTodoRepository.saveCalled, equalTo(true))
     }
 
 }

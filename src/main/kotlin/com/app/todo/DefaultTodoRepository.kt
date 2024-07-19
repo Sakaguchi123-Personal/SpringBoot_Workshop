@@ -6,8 +6,15 @@ import org.springframework.stereotype.Repository
 class DefaultTodoRepository(val todoJpaRepository: TodoJpaRepository): TodoRepository {
 
     override fun findAll(): List<Todo> {
-        todoJpaRepository.findAll()
-        return listOf()
+        val todoValue = todoJpaRepository.findAll()
+
+        /* same as JavaScript Array map
+        todoValue.map(it => {
+            return Todo(it.id, it.name, it.finished)
+        })*/
+
+        return todoValue.map { Todo(it.id, it.name, it.finished )}
+
     }
 
     override fun save(todo: Todo) {
