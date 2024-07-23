@@ -10,7 +10,7 @@ import jakarta.persistence.Id
 class TodoEntity(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    val id: Int,
+    val id: Int?,
     val name: String,
     val finished: Boolean) {
 
@@ -29,7 +29,7 @@ class TodoEntity(
     }
 
     override fun hashCode(): Int {
-        var result = id
+        var result = id ?: 0
         result = 31 * result + name.hashCode()
         result = 31 * result + finished.hashCode()
         return result

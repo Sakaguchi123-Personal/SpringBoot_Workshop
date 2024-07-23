@@ -14,4 +14,18 @@ class DefaultTodoService(val todoRepository: TodoRepository) : TodoService {
     override fun postTodos(todo: Todo) {
         todoRepository.save(todo)
     }
+
+    override fun deleteTodo(id: Int) {
+        todoRepository.delete(id)
+    }
+
+    override fun updateTodo(id: Int, updateTodo: Todo): Todo {
+        val fetchedTodo = todoRepository.findById(id)
+            ?: throw RuntimeException("no todo found with id $id")
+
+        val updatedTodo = Todo(fetchedTodo.id, updateTodo.name, updateTodo.finished)
+        todoRepository.save(updatedTodo)
+
+        return updatedTodo
+    }
 }
