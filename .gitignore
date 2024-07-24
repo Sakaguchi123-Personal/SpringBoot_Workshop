@@ -39,4 +39,5 @@ out/
 ### Kotlin ###
 .kotlin
 
-server/src/main/resources/staic/**
+server/src/main/resources/static/assets/
+server/src/main/resources/static/index.html
