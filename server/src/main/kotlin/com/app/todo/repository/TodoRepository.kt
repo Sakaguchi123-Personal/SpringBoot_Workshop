@@ -1,4 +1,6 @@
-package com.app.todo
+package com.app.todo.repository
+
+import com.app.todo.model.Todo
 
 interface TodoRepository {
     fun findAll(): List<Todo>

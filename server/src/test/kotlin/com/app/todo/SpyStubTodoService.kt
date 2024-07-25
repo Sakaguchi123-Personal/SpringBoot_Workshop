@@ -1,4 +1,7 @@
-package com.app.todo
+package com.app
+
+import com.app.todo.model.Todo
+import com.app.todo.service.TodoService
 
 
 class SpyStubTodoService: TodoService {
@@ -35,7 +38,7 @@ class SpyStubTodoService: TodoService {
         updateTodoCalled = true
         updateTodoId = id
         updateTodoBody = updateTodo
-        return updateTodoReturnValue!!
+        return updateTodoReturnValue
     }
 
 

@@ -1,4 +1,4 @@
-package com.app.todo
+package com.app.todo.repository.jpa
 
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue

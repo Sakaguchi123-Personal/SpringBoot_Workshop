@@ -1,5 +1,8 @@
 package com.app.todo
 
+import com.app.todo.controller.TodoUpdateRequest
+import com.app.todo.model.Todo
+import com.app.todo.repository.jpa.TodoJpaRepository
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo
 import org.junit.jupiter.api.BeforeEach
@@ -13,7 +16,7 @@ import org.springframework.boot.test.web.server.LocalServerPort
     webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
     properties = ["spring.jpa.show-sql=true"]
 )
-class TodoApplicationTests {
+class MainApplicationTests {
 
     @Autowired
     private lateinit var restTemplate: TestRestTemplate

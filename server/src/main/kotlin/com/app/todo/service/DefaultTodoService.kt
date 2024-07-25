@@ -1,5 +1,8 @@
-package com.app.todo
+package com.app.todo.service
 
+import com.app.todo.model.Todo
+import com.app.todo.model.exception.TodoNotFoundException
+import com.app.todo.repository.TodoRepository
 import org.springframework.stereotype.Service
 
 @Service
@@ -21,7 +24,7 @@ class DefaultTodoService(val todoRepository: TodoRepository) : TodoService {
 
     override fun updateTodo(id: Int, updateTodo: Todo): Todo {
         val fetchedTodo = todoRepository.findById(id)
-            ?: throw RuntimeException("no todo found with id $id")
+            ?: throw TodoNotFoundException("no todo found with id $id")
 
         val updatedTodo = Todo(fetchedTodo.id, updateTodo.name, updateTodo.finished)
         todoRepository.save(updatedTodo)

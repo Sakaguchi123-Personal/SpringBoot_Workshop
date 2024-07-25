@@ -14,7 +14,7 @@ const App: React.FC<Props> = ({ todoClient }) => {
         todoClient.getTodos().then((res) => {
             setTodo(res)
         })
-    }, [])
+    }, [todoClient])
 
     return (
         <div className={styles.container}>

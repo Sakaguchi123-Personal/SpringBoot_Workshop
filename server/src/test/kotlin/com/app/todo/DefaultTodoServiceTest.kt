@@ -1,12 +1,16 @@
-package com.app.todo
+package com.app
 
+import com.app.todo.SpyStubTodoRepository
+import com.app.todo.service.DefaultTodoService
+import com.app.todo.model.Todo
+import com.app.todo.model.exception.TodoNotFoundException
+import com.app.todo.service.TodoService
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import kotlin.test.assertFailsWith
 
 class DefaultTodoServiceTest {
 
@@ -114,7 +118,7 @@ class DefaultTodoServiceTest {
             spyStubTodoRepository.setFindByIdReturnValue(null)
 
 
-            val err = assertThrows<RuntimeException> {
+            val err = assertThrows<TodoNotFoundException> {
                 todoService.updateTodo(999, Todo(null, "Learn spring", false))
             }
             assertThat(err.message, equalTo("no todo found with id 999"))

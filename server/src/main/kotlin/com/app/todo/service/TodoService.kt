@@ -1,4 +1,6 @@
-package com.app.todo
+package com.app.todo.service
+
+import com.app.todo.model.Todo
 
 interface TodoService {
     fun getTodos() : List<Todo>

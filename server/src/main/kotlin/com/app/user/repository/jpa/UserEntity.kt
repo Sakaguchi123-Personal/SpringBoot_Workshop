@@ -1,4 +1,4 @@
-package com.app.todo.user
+package com.app.user.repository.jpa
 
 import jakarta.persistence.Column
 import jakarta.persistence.Entity

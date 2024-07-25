@@ -1,5 +1,8 @@
 package com.app.todo
 
+import com.app.todo.model.Todo
+import com.app.todo.repository.TodoRepository
+
 class SpyStubTodoRepository: TodoRepository {
 
     var findAllCalled = false

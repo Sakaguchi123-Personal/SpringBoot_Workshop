@@ -1,4 +1,4 @@
-package com.app.todo.user
+package com.app.user.repository.jpa
 
 import org.springframework.data.jpa.repository.JpaRepository
 

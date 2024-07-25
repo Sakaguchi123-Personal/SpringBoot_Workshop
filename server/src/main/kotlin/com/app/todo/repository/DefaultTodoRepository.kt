@@ -1,5 +1,8 @@
-package com.app.todo
+package com.app.todo.repository
 
+import com.app.todo.model.Todo
+import com.app.todo.repository.jpa.TodoEntity
+import com.app.todo.repository.jpa.TodoJpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
@@ -13,7 +16,7 @@ class DefaultTodoRepository(val todoJpaRepository: TodoJpaRepository): TodoRepos
             return Todo(it.id, it.name, it.finished)
         })*/
 
-        return todoValue.map { Todo(it.id, it.name, it.finished )}
+        return todoValue.map { Todo(it.id, it.name, it.finished ) }
 
     }
 

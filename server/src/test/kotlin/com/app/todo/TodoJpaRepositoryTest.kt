@@ -1,5 +1,7 @@
 package com.app.todo
 
+import com.app.todo.repository.jpa.TodoEntity
+import com.app.todo.repository.jpa.TodoJpaRepository
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo
 import org.junit.jupiter.api.Test

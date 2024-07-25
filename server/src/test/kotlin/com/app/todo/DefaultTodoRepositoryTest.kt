@@ -1,5 +1,10 @@
 package com.app.todo
 
+import com.app.todo.model.Todo
+import com.app.todo.repository.DefaultTodoRepository
+import com.app.todo.repository.jpa.TodoEntity
+import com.app.todo.repository.jpa.TodoJpaRepository
+import com.app.todo.repository.TodoRepository
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
