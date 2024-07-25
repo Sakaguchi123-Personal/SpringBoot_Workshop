@@ -1,5 +1,6 @@
 package com.app.todo
 
+import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -16,8 +17,15 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api/v1/todo")
 class TodoController(val todoService: TodoService) {
 
+    val log = LoggerFactory.getLogger(TodoController::class.java)
+
     @GetMapping
     fun getAllTodo(): List<Todo> {
+//        log.trace("TRACE :Getting all Todos")
+//        log.debug("DEBUG: Getting all Todos")
+//        log.info("INFO: Getting all Todos")
+//        log.warn("WARN: Getting all Todos")
+//        log.error("ERROR: Getting all Todos")
         return todoService.getTodos()
     }
 
