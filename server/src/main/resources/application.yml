@@ -8,10 +8,6 @@ spring:
     password:
     driver-class-name: org.postgresql.Driver
 
-  h2:
-    console:
-      enabled: true
-
 logging:
   level:
     com.app.todo: info
