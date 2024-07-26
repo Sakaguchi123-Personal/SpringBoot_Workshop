@@ -1,12 +1,10 @@
 package com.app.todo.repository.jpa
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
 
 //マイグレの代わり(jpa) jdbctemplateだとマイグレがいる
 @Entity
+@Table(name = "todo")
 class TodoEntity(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

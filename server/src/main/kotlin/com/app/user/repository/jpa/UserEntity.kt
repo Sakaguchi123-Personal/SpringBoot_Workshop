@@ -7,13 +7,11 @@ import jakarta.persistence.Id
 import jakarta.persistence.Table
 
 @Entity
-@Table(name = "TB_USERS")
+@Table(name = "users")
 class UserEntity(
     @GeneratedValue @Id val id: Int,
 
     @Column(name = "nickname")
     val name: String,
     val email: String) {
-
-
 }
