@@ -11,3 +11,7 @@ spring:
 logging:
   level:
     com.app.todo: info
+
+# custom configuration
+public-api:
+  url: https://jsonplaceholder.typicode.com

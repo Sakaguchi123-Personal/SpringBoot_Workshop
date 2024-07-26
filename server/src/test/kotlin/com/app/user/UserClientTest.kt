@@ -14,7 +14,7 @@ class UserClientTest {
 
     @Test
     fun `users should call json place holder public API`() {
-        val endpoint = "https://jsonplaceholder.typicode.com/users"
+        val endpoint = "https://example.com"
         val restClientBuilder = RestClient.builder()
         val mockServer :MockRestServiceServer = MockRestServiceServer.bindTo(restClientBuilder).build()
 
@@ -28,11 +28,11 @@ class UserClientTest {
             ]
         """.trimIndent()
 
-        mockServer.expect(requestTo(endpoint))
+        mockServer.expect(requestTo("$endpoint/users"))
             .andExpect(method(HttpMethod.GET))
             .andRespond(withSuccess().body(responseBody).contentType(APPLICATION_JSON))
 
-        val userClient = UserClient(restClientBuilder.build())
+        val userClient = UserClient(restClientBuilder.build(), endpoint)
         userClient.users()
 
         mockServer.verify()
